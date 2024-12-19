@@ -1,35 +1,32 @@
-name: Deploy Project  # Name of the workflow
-on: [push, workflow_dispatch]  # Trigger workflow on push or manual dispatch
+name: Deploy Project
+on: [push, workflow_dispatch]
 jobs:
-  test:  # Define the test job
-    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+  test:
+    runs-on: ubuntu-latest
     steps:
-      - name: Get code  # Step to check out the repository code
+      - name: Get code
         uses: actions/checkout@v3
-      - name: Install NodeJS  # Step to set up Node.js
+      - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Specify Node.js version 18
-      - name: Install dependencies  # Step to install project dependencies
+          node-version: 18
+      - name: Install dependencies
         run: npm ci
-      - name: Run tests  # Step to run tests
+      - name: Run tests
         run: npm test
-
-  # Deploy job runs after the test job, regardless of test job success or failure
   deploy:
-    if: always()  # Ensure this job runs even if the test job fails
-    needs: test  # This job depends on the completion of the test job
-    runs-on: ubuntu-latest  # Use the latest Ubuntu environment
+    needs: test
+    runs-on: ubuntu-latest
     steps:
-      - name: Get code  # Step to check out the repository code
+      - name: Get code
         uses: actions/checkout@v3
-      - name: Install NodeJS  # Step to set up Node.js
+      - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
-          node-version: 18  # Specify Node.js version 18
-      - name: Install dependencies  # Step to install project dependencies
+          node-version: 18
+      - name: Install dependencies
         run: npm ci
-      - name: Build project  # Step to build the project
+      - name: Build project
         run: npm run build
-      - name: Deploy  # Step to deploy the project
-        run: echo "Deploying ..."  # Replace this with actual deployment commands
+      - name: Deploy
+        run: echo "Deploying ..."
