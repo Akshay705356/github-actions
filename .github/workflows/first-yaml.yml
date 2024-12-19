@@ -1,0 +1,14 @@
+name: first-workflow-practice
+on: workflow_dispatch
+jobs:
+  my_job:
+    name: testing first job
+    runs-on: ubunut-latest
+    steps:
+      - name: first comamand
+        run: echo "hello world"
+      - name: second command
+        run: |
+          echo "here i am using multiple line"
+          echo " mutiple commands are being used here"
+    
