@@ -3,9 +3,9 @@ on: workflow_dispatch
 jobs:
   my_job:
     name: testing first job
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: first comamand
+      - name: first command
         run: echo "hello world"
       - name: second command
         run: |
