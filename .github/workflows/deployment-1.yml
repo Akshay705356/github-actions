@@ -15,6 +15,7 @@ jobs:
       - name: Run tests
         run: npm test
   deploy:
+    if: always()  # Ensure this job runs even if the test job fails
     needs: test
     runs-on: ubuntu-latest
     steps:
