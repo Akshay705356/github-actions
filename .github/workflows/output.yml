@@ -1,5 +1,7 @@
 name: Expression output
-on: [push,workflow_dispatch]
+on:
+  push:
+  workflow_dispatch:
 jobs:
   info:
     runs-on: ubuntu-latest
