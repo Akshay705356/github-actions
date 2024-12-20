@@ -1,5 +1,5 @@
 name: first-workflow-practice
-on: workflow_dispatch
+on: push
 jobs:
   my_job:
     name: testing first job
