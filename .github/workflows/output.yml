@@ -1,0 +1,12 @@
+name: Expression output
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Get output
+        run: echo "The output is ${{ toJson(github) }}"
