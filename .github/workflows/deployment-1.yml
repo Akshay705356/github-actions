@@ -4,9 +4,9 @@ on:
     branches:
       - main
   workflow_dispatch:
-  schedule:
-    - cron: '30 12 * * 5'  # Run every friday at 5:30 pm IST
-    - cron: '0 * * * *'  # Run every hour
+  # schedule:
+  #   - cron: '30 12 * * 5'  # Run every friday at 5:30 pm IST
+  #   - cron: '0 * * * *'  # Run every hour
 jobs:
   test:
     runs-on: ubuntu-latest
