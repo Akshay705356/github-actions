@@ -1,4 +1,4 @@
-name: expression_output
+name: Expression output
 on: workflow_dispatch
 jobs:
   info:
