@@ -1,9 +1,11 @@
 name: Deploy Project
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
   schedule:
-    - cron: '* * * * *'  # Run every day at midnight
+    - cron: '*/1 * * * *'  # Run every minute
 jobs:
   test:
     runs-on: ubuntu-latest
