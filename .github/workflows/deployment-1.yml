@@ -5,7 +5,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: '*/1 * * * *'  # Run every minute
+    - cron: '30 12 * * 5'  # Run every friday at 5:30 pm IST
 jobs:
   test:
     runs-on: ubuntu-latest
