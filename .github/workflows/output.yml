@@ -1,6 +1,6 @@
 name: Expression output
 on:
-  push:
+  # push:
   workflow_dispatch:
 jobs:
   info:
