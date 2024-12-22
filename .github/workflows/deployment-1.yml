@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dev-*  # Deploy on all dev branches
     paths-ignore:
       - '.github/workflows/*'
   workflow_dispatch:
