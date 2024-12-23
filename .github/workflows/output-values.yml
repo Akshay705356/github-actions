@@ -1,0 +1,53 @@
+name: Output values practice
+on:
+    push:
+      branches:
+        - main
+        - dev-*  # Deploy on all dev branches
+      paths-ignore:
+        - '.github/workflows/*'
+    workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    outputs:
+      value-pass: ${{ steps.variable-pass.outputs.value-pass }}
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Build website
+        run: npm run build
+      - name: fetch output
+        id: variable-pass
+        run: echo "Value-pass=Hello there" >> $GITHUB_OUTPUT
+    #   - name: Archive artifacts
+    #     uses: actions/upload-artifact@v4
+    #     with:
+    #       name: website
+    #       path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Get output value
+        run: echo "Output value is ${{ needs.build.outputs.value-pass }}" 
+    #   - name: download artifacts
+    #     uses: actions/download-artifact@v4
+    #     with:
+    #       name: website
+      - name: Deploy
+        run: echo "Deploying..."
