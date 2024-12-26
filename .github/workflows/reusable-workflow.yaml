@@ -5,8 +5,14 @@ on:
       myInput:
         required: true
         type: string
+    outputs:
+        myOutput:
+            description: this is the output value
+            value: ${{ jobs.test.outputs.outcome }}    
 jobs:
   test:
+    outputs:
+      outcome: ${{ steps.set-output.outputs.set-value }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -15,5 +21,8 @@ jobs:
         run: npm ci
       - name: Test code
         run: npm run test
+      - name: Set output
+        id: set-output
+        run: echo "set-value=Hello there!" >> $GITHUB_OUTPUT
       - name: display input
         run: echo ${{ inputs.myInput }}
