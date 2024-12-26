@@ -16,3 +16,9 @@ jobs:
     uses: ./.github/workflows/reusable-workflow.yaml
     with:
       myInput: "Hello, world!"
+  print-output:
+    needs: call-workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get output value
+        run: echo "Output value is ${{ needs.call-workflow.outputs.myOutput }}"
