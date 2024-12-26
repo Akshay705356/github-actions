@@ -1,6 +1,10 @@
 name: reusable-workflow
 on:
   workflow_call:
+    inputs:
+      myInput:
+        required: true
+        type: string
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -11,3 +15,5 @@ jobs:
         run: npm ci
       - name: Test code
         run: npm run test
+      - name: display input
+        run: echo ${{ inputs.myInput }}
