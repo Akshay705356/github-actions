@@ -36,7 +36,7 @@ jobs:
           path: dist
   deploy:
     needs: build
-    if: always()  # Always run this job
+    if: failure()  # Always run this job when the build job fails
     runs-on: ubuntu-latest
     steps:
       - name: Get code
