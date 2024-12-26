@@ -1,0 +1,15 @@
+name: caller-workflow
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+  call-workflow:
+    uses: ./.github/workflows/reusable-workflow.yaml
