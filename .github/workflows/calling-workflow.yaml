@@ -12,4 +12,5 @@ jobs:
       - name: Test code
         run: npm run test
   call-workflow:
+    needs: test
     uses: ./.github/workflows/reusable-workflow.yaml
