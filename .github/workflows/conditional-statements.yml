@@ -24,8 +24,10 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Install dependencies
+        id: install
         run: npm ci
       - name: Build website
+        if: steps.install.outcome != 'success'  # Only run if the install job was not successful
         run: npm run build
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
