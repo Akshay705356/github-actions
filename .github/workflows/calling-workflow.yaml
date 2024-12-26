@@ -14,3 +14,5 @@ jobs:
   call-workflow:
     needs: test
     uses: ./.github/workflows/reusable-workflow.yaml
+    with:
+      myInput: "Hello, world!"
